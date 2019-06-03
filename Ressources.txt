@@ -1,2 +1,3 @@
 https://www.kingbase-chess.net/
 https://www.matroid.com/dlwithtf/chap1-2.pdf
+https://erikbern.com/2014/11/29/deep-learning-for-chess.html
