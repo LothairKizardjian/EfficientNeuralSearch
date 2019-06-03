@@ -5,3 +5,4 @@ https://medium.com/datadriveninvestor/reconstructing-chess-positions-f195fd5944e
 https://karpathy.github.io/2016/05/31/rl/
 https://www.freecodecamp.org/news/simple-chess-ai-step-by-step-1d55a9266977/
 https://arxiv.org/pdf/1802.03268.pdf
+https://www.tutorialspoint.com/tensorflow/tensorflow_tutorial.pdf
