@@ -11,6 +11,7 @@ https://www.kingbase-chess.net/
 https://erikbern.com/2014/11/29/deep-learning-for-chess.html
 https://medium.com/datadriveninvestor/reconstructing-chess-positions-f195fd5944e
 https://www.freecodecamp.org/news/simple-chess-ai-step-by-step-1d55a9266977/
+https://arxiv.org/pdf/1712.01815.pdf #### AlphaZero chess / shogi
 
 ### ENAS papers
 
