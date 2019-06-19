@@ -29,4 +29,4 @@ for i in range(1,tensors_to_test.nb_moves+1):
     if i==tensors_to_test.nb_moves:
         tensor = tensors_to_test.tensors[counter]
         test_fen_to_tensor(tensor,fen)
-        
+print(board)

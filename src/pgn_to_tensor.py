@@ -49,9 +49,5 @@ def tensors_for_each_move(game):
         fen = board.fen()
         tensors.append(fen_to_tensor(fen))
     return tensors
-        
-    
-chess_games_pgn = open("../PGN_chess_games/chess_games.pgn")
-first_game = chess.pgn.read_game(chess_games_pgn)
-first_game_tensors = tensors_for_each_move(first_game)
+
 
