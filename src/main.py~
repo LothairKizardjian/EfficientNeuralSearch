@@ -1,0 +1,9 @@
+from data_loader import load_data
+from keras.utils import to_categorical
+
+nb_games = 5000
+pgn = open("../PGN_chess_games/chess_games.pgn")
+tensors,labels = load_data(pgn,nb_games)
+
+print(tensors.shape)
+print(labels.shape)

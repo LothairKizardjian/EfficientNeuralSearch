@@ -1,14 +1,14 @@
 import pytest
 import chess
 import numpy as np
-import pgn_to_tensor
+import config
 import tensors_to_test
 
 board = chess.Board()
 fen_starting_board =board.fen()
 
 def test_fen_to_tensor(tensor,fen):
-    tensor_to_test = pgn_to_tensor.fen_to_tensor(fen) 
+    tensor_to_test = config.fen_to_tensor(fen) 
     assert tensor.shape == tensor_to_test.shape
     for i in range(len(tensor)):
         for j in range(len(tensor[0])):

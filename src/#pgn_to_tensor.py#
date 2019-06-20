@@ -1,0 +1,14 @@
+
+
+
+            
+
+'''
+pgn = open("../PGN_chess_games/chess_games.pgn")
+games = get_games(pgn,15)
+tensors, labels = tensors_labels_for_each_move(games[12])
+
+for i in range(9):
+    print(tensors[i])
+    print(labels[i])
+'''
