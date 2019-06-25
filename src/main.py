@@ -6,6 +6,10 @@ from keras.optimizers import *
 from sklearn.preprocessing import LabelBinarizer
 from pgn_tensors_utils import create_uci_labels
 
+config = tf.ConfigProto()
+config.gpu_options.allow_growth=True
+sess = tf.Session(config=config)
+
 nb_games = 5000
 pgn_path = '../PGN_chess_games/chess_games.pgn'
 uci_labels = create_uci_labels()
