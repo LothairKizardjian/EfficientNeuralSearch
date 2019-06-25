@@ -1,4 +1,4 @@
-from data_loader import load_data
+from data_loader import *
 from pgn_tensors_utils import *
 from keras.models import *
 from keras.layers import *
@@ -8,18 +8,11 @@ from pgn_tensors_utils import create_uci_labels
 
 nb_games = 5000
 pgn_path = '../PGN_chess_games/chess_games.pgn'
+uci_labels = create_uci_labels()
 tensors,labels = load_data(pgn_path,nb_games)
 
-x_train = tensors[0:len(tensors)-int(len(tensors)/3),:]
-y_train = labels[0:len(labels)-int(len(labels)/3)]
-
-x_test = tensors[len(tensors)-int(len(tensors)/3):,:]
-y_test = labels[len(labels)-int(len(labels)/3):]
-
-#One-hot encoding
-uci_labels = create_uci_labels()
-y_train = np.asarray([one_hot_encoded_label(y,uci_labels) for y in y_train])
-y_test  = np.asarray([one_hot_encoded_label(y,uci_labels) for y in y_test])
+#One_hot encoding
+labels = np.asarray([one_hot_encoded_label(y,uci_labels) for y in labels])
 
 
 #creating the model
@@ -37,7 +30,19 @@ output = Dense(len(create_uci_labels()), activation='softmax', name='output')(s_
 
 model = Model(inputs=input_boards, outputs=output)
 model.compile(loss='categorical_crossentropy', optimizer='adam',metrics=['accuracy'])
-model.fit(x_train, y_train, validation_data=(x_test, y_test), epochs=3)
 
 
+#training
+nb_train = 30
+nb_ex    = 15000
+for i in range(nb_train):
+    print('Training pool {} ...'.format(i+1))
+    x,y = select_random_examples(tensors,labels,nb_ex)
+    print(x.shape)
+    print(y.shape)
+    x_train = x[0:len(x)-int(len(x)/5),:]
+    y_train = y[0:len(y)-int(len(y)/5)]
 
+    x_test = x[len(x)-int(len(x)/5):,:]
+    y_test = y[len(y)-int(len(y)/5):]
+    model.fit(x_train, y_train,batch_size=5, validation_data=(x_test, y_test), epochs=15)
