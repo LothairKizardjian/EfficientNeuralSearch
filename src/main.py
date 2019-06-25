@@ -44,9 +44,9 @@ for i in range(nb_train):
     x,y = select_random_examples(tensors,labels,nb_ex)
     print(x.shape)
     print(y.shape)
-    x_train = x[0:len(x)-int(len(x)/8),:]
-    y_train = y[0:len(y)-int(len(y)/8)]
+    x_train = x[0:len(x)-int(len(x)/5),:]
+    y_train = y[0:len(y)-int(len(y)/5)]
 
-    x_test = x[len(x)-int(len(x)/8):,:]
-    y_test = y[len(y)-int(len(y)/8):]
-    model.fit(x_train, y_train,batch_size=1000, validation_data=(x_test, y_test), epochs=50)
+    x_test = x[len(x)-int(len(x)/5):,:]
+    y_test = y[len(y)-int(len(y)/5):]
+    model.fit(x_train, y_train,batch_size=500, validation_data=(x_test, y_test), epochs=20)
