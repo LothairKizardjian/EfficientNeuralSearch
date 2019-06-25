@@ -49,4 +49,4 @@ for i in range(nb_train):
 
     x_test = x[len(x)-int(len(x)/8):,:]
     y_test = y[len(y)-int(len(y)/8):]
-    model.fit(x_train, y_train,batch_size=20, validation_data=(x_test, y_test), epochs=20)
+    model.fit(x_train, y_train,batch_size=100, validation_data=(x_test, y_test), epochs=20)
