@@ -34,9 +34,9 @@ model.compile(loss='categorical_crossentropy', optimizer='adam',metrics=['accura
 
 #training
 nb_train = 30
-nb_ex    = 15000
+nb_ex    = 2000
 for i in range(nb_train):
-    print('Training pool {} ...'.format(i+1))
+    print('Training pool {}/{} ...'.format(i+1,nb_train))
     x,y = select_random_examples(tensors,labels,nb_ex)
     print(x.shape)
     print(y.shape)
