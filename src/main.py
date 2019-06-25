@@ -7,8 +7,8 @@ from sklearn.preprocessing import LabelBinarizer
 from pgn_tensors_utils import create_uci_labels
 
 nb_games = 5000
-pgn = open("../PGN_chess_games/chess_games.pgn")
-tensors,labels = load_data(pgn,nb_games)
+pgn_path = '../PGN_chess_games/chess_games.pgn'
+tensors,labels = load_data(pgn_path,nb_games)
 
 x_train = tensors[0:len(tensors)-int(len(tensors)/3),:]
 y_train = labels[0:len(labels)-int(len(labels)/3)]
