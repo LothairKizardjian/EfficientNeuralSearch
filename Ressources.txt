@@ -18,6 +18,11 @@ https://augmentedlawyer.com/2019/01/27/how-alphazero-works/
 
 https://arxiv.org/pdf/1802.03268.pdf
 
+# git repo
+
+https://github.com/melodyguan/enas$
+https://github.com/shibuiwilliam/ENAS-Keras/blob/master/ENAS.py
+
 ### TensorFlow papers
 
 https://www.matroid.com/dlwithtf/chap1-2.pdf
