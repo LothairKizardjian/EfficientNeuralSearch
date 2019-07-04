@@ -42,10 +42,14 @@ def load_data(pgn_path,game_nb):
     '''
     Load the tensors, the according labels and store them in a .npy file
     '''
-    suffixe = pgn_path.split('/')
+    suffixe = pgn_path.split('/')    
     suffixe = suffixe[2].replace('.pgn','')
     tensors_file_exist = os.path.isfile('./data/tensors/tensors_numpy_{}.npy'.format(suffixe))
     labels_files_exist = os.path.isfile('./data/tensors/labels_numpy_{}.npy'.format(suffixe))
+
+    
+    print("     Loading data for {}".format(suffixe))  
+    
     if tensors_file_exist == False or labels_files_exist == False:
         games = load_games_from_pgn_path(pgn_path,game_nb)
         print("loading tensors and according labels ...")
@@ -60,6 +64,7 @@ def load_data(pgn_path,game_nb):
     return tensors,labels
 
 def load_data_from_multiple_files(paths,game_nb):
+    print("Loading data ...")
     tensors = []
     labels  = []
     for pgn_path in paths:
