@@ -44,8 +44,8 @@ def load_data(pgn_path,game_nb):
     '''
     suffixe = pgn_path.split('/')    
     suffixe = suffixe[2].replace('.pgn','')
-    tensors_file_exist = os.path.isfile('./data/tensors/tensors_numpy_{}.npy'.format(suffixe))
-    labels_files_exist = os.path.isfile('./data/tensors/labels_numpy_{}.npy'.format(suffixe))
+    tensors_file_exist = os.path.isfile('./data/tensors/tensors_numpy_{}games_{}.npy'.format(game_nb,suffixe))
+    labels_files_exist = os.path.isfile('./data/tensors/labels_numpy_{}games_{}.npy'.format(game_nb,suffixe))
 
     
     print("     Loading data for {}".format(suffixe))  
@@ -56,11 +56,11 @@ def load_data(pgn_path,game_nb):
         tensors,labels = pgn_tensors_utils.tensors_labels_from_games(games)
         if os.path.isdir('./data') == False:
             os.mkdir('./data')
-        np.save('./data/tensors/labels_numpy_{}.npy'.format(suffixe), labels)
-        np.save('./data/tensors/tensors_numpy_{}.npy'.format(suffixe), tensors)
+        np.save('./data/tensors/labels_numpy_{}games_{}.npy'.format(game_nb,suffixe), labels)
+        np.save('./data/tensors/tensors_numpy_{}games_{}.npy'.format(game_nb,suffixe), tensors)
     else:
-        tensors = np.load('./data/tensors/tensors_numpy_{}.npy'.format(suffixe))
-        labels  = np.load('./data/tensors/labels_numpy_{}.npy'.format(suffixe))
+        tensors = np.load('./data/tensors/tensors_numpy_{}games_{}.npy'.format(game_nb,suffixe))
+        labels  = np.load('./data/tensors/labels_numpy_{}games_{}.npy'.format(game_nb,suffixe))
     return tensors,labels
 
 def load_data_from_multiple_files(paths,game_nb):
