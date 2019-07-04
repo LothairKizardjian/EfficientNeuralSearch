@@ -18,7 +18,7 @@ nb_games = sys.maxsize
 paths = []
 
 paths.append("../PGN_chess_games/chess_games_20{}.pgn".format('00'))
-paths.append("../PGN_chess_games/chess_games_20{}.pgn".format('01'))
+#paths.append("../PGN_chess_games/chess_games_20{}.pgn".format('01'))
 uci_labels = create_uci_labels()
 tensors,labels = load_data_from_multiple_files(paths,nb_games)
 
