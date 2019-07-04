@@ -48,7 +48,7 @@ def load_data(pgn_path,game_nb):
     labels_files_exist = os.path.isfile('./data/tensors/labels_numpy_{}games_{}.npy'.format(game_nb,suffixe))
 
     
-    print("     Loading data for {}".format(suffixe))  
+    print("     Loading data for {}".format(suffixe))
     
     if tensors_file_exist == False or labels_files_exist == False:
         games = load_games_from_pgn_path(pgn_path,game_nb)

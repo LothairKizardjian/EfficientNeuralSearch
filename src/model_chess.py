@@ -69,10 +69,10 @@ class model_chess():
         self.save()
  
     def save(self):
-        model_json = model.to_json()
+        model_json = self.model.to_json()
         with open("./data/models/model.json",'r'):
             json_file.write(model_json)
-        model.save_weights("./data/models/model.h5")
+        self.model.save_weights("./data/models/model.h5")
         print("Saved model to disk")
 
     @staticmethod
