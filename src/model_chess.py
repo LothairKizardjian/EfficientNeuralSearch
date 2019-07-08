@@ -2,6 +2,7 @@ import sys
 import os
 import tensorflow as tf
 
+from pathlib2 import Path
 from data_loader import *
 from pgn_tensors_utils import *
 from keras.models import *
@@ -66,23 +67,27 @@ class model_chess():
             print('Pool {}/{} :'.format(i,pool_size))
             x_train,y_train,x_test,y_test = self.sample(self.batch_size,5)
             self.model.fit(x_train,y_train,batch_size=self.mini_batch_size,validation_data=(x_test,y_test),epochs=self.epoch_nb)
+            self.save()
         self.save()
  
     def save(self):
-        model_json = model.to_json()
-        with open("./data/models/model.json",'r'):
+        model_json = self.model.to_json()
+        path = "./data/models/model.json"
+        model_exist = os.path.isfile(path)
+        if model_exist == False:
+            Path(path).touch()
+        with open(path,'w') as json_file:
             json_file.write(model_json)
-        model.save_weights("./data/models/model.h5")
+        self.model.save_weights("./data/models/model.h5")
         print("Saved model to disk")
 
     @staticmethod
-    def load(self):
+    def load():
         json_file = open("./data/models/model.json",'r')
         loaded_model_json = json_file.read()
         json_file.close()
         loaded_model = model_from_json(loaded_model_json)
-        loaded_model.load_weights("model.h5")
+        loaded_model.load_weights("./data/models/model.h5")
         print("Loaded model from disk")
-        self.model = loaded_model
 
         return loaded_model
