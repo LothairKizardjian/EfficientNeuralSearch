@@ -1,6 +1,8 @@
 import sys
 import os
 import tensorflow as tf
+import numpy as np
+import chess
 
 from pathlib2 import Path
 from data_loader import *
@@ -20,13 +22,15 @@ sess = tf.Session(config=config)
 
 class model_chess():
     def __init__(self,
-                 tensors,
-                 labels,
-                 batch_size,
-                 mini_batch_size,
-                 epoch_nb
+                 batch_size = 100000,
+                 mini_batch_size = 25,
+                 epoch_nb = 10,
+                 model = None,
+                 tensors = None,
+                 labels = None
     ):
         print("Building model ...")
+        self.model           = model 
         self.tensors         = tensors
         self.labels          = labels 
         self.batch_size      = batch_size
@@ -44,11 +48,12 @@ class model_chess():
         h_conv4_flat = Flatten()(h_conv4)       
         s_fc1 = Dropout(0.3)(Activation('relu')(BatchNormalization(axis=1)(Dense(1024, use_bias=False)(h_conv4_flat))))  
         s_fc2 = Dropout(0.3)(Activation('relu')(BatchNormalization(axis=1)(Dense(512, use_bias=False)(s_fc1))))
-        output = Dense(len(create_uci_labels()), activation='softmax', name='output')(s_fc2)  
+        output = Dense(len(self.uci_labels), activation='softmax', name='output')(s_fc2)  
     
-        model = Model(inputs=input_boards, outputs=output)
-        model.compile(loss='categorical_crossentropy', optimizer='adam',metrics=['accuracy'])
-        self.model = model
+        mod = Model(inputs=input_boards, outputs=output)
+        mod.compile(loss='categorical_crossentropy', optimizer='adam',metrics=['accuracy'])
+        if self.model == None:
+            self.model = mod
             
     def sample(self,sample_size,train_size):
         x, y = select_random_examples(self.tensors,self.labels,sample_size)
@@ -69,7 +74,20 @@ class model_chess():
             self.model.fit(x_train,y_train,batch_size=self.mini_batch_size,validation_data=(x_test,y_test),epochs=self.epoch_nb)
             self.save()
         self.save()
- 
+
+    def get_move(self,prediction,legal_moves):
+        prediction = prediction.tolist()[0]
+        if len(prediction) != len(self.uci_labels):
+            print("List with len {} expected".format(len(self.uci_labels)))
+        else:
+            moves = np.argsort(prediction)
+            count = 0
+            move  = chess.Move.from_uci(self.uci_labels[moves[count]])
+            while move not in legal_moves:
+                count+=1
+                move = chess.Move.from_uci(self.uci_labels[moves[count]])
+            return move
+                
     def save(self):
         model_json = self.model.to_json()
         path = "./data/models/model.json"

@@ -15,7 +15,7 @@ tensors,labels = load_data_from_multiple_files(paths,nb_games)
 print(tensors.shape)
 print(labels.shape)
 
-model = model_chess(tensors, labels, batch_size=10000, mini_batch_size=25, epoch_nb=10)
+model = model_chess(batch_size=10000, mini_batch_size=25, epoch_nb=10, tensors=tensors, labels=labels)
 model.train(10)
 
 
