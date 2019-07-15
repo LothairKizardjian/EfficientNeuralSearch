@@ -3,7 +3,7 @@ from __future__ import division
 from __future__ import print_function
 
 import os
-import cPickle as pickle
+import _pickle as pickle
 import shutil
 import sys
 import time
@@ -19,12 +19,12 @@ from src.utils import DEFINE_integer
 from src.utils import DEFINE_string
 from src.utils import print_user_flags
 
-from src.cifar10.data_utils import read_data
-from src.cifar10.general_controller import GeneralController
-from src.cifar10.general_child import GeneralChild
+from data_utils import read_data
+from general_controller import GeneralController
+from general_child import GeneralChild
 
-from src.cifar10.micro_controller import MicroController
-from src.cifar10.micro_child import MicroChild
+from micro_controller import MicroController
+from micro_child import MicroChild
 
 flags = tf.app.flags
 FLAGS = flags.FLAGS

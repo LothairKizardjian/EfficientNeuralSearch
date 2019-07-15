@@ -27,11 +27,11 @@ def stack_lstm(x, prev_c, prev_h, w):
 def create_weight(name, shape, initializer=None, trainable=True, seed=None):
   if initializer is None:
     initializer = tf.contrib.keras.initializers.he_normal(seed=seed)
-  return tf.get_variable(name, shape, initializer=initializer, trainable=trainable)
+  return tf.compat.v1.get_variable(name, shape, initializer=initializer, trainable=trainable)
 
 
 def create_bias(name, shape, initializer=None):
   if initializer is None:
     initializer = tf.constant_initializer(0.0, dtype=tf.float32)
-  return tf.get_variable(name, shape, initializer=initializer)
+  return tf.compat.v1.get_variable(name, shape, initializer=initializer)
 
