@@ -32,7 +32,7 @@ try:
 except NameError:
     xrange = range  # Python 3
 
-GPU_ID = "3"
+GPU_ID = "2"
 
 flags = tf.app.flags
 FLAGS = flags.FLAGS
