@@ -13,6 +13,7 @@ https://medium.com/datadriveninvestor/reconstructing-chess-positions-f195fd5944e
 https://www.freecodecamp.org/news/simple-chess-ai-step-by-step-1d55a9266977/
 https://arxiv.org/pdf/1712.01815.pdf #### AlphaZero chess / shogi
 https://augmentedlawyer.com/2019/01/27/how-alphazero-works/
+https://pdfs.semanticscholar.org/28a9/fff7208256de548c273e96487d750137c31d.pdf
 
 ### ENAS papers
 
