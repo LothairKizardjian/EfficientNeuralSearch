@@ -14,7 +14,7 @@ python src/chess/main.py \
   --eval_every_epochs=1 \
   --child_use_aux_heads \
   --child_num_layers=12 \
-  --child_out_filters=36 \
+  --child_out_filters=256 \
   --child_l2_reg=0.00025 \
   --child_num_branches=6 \
   --child_num_cell_layers=5 \
