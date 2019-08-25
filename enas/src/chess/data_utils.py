@@ -11,7 +11,7 @@ def read_data(data_path, num_valids=5000):
   print("-" * 80)
   print("Reading data")
 
-  nb_games = 1000
+  nb_games = 2000
   #nb_games = sys.maxsize
   boards, labels, results = {}, {}, {}
 

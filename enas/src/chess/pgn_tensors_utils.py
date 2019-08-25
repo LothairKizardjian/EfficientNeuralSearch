@@ -44,7 +44,6 @@ def tensors_for_each_move(game):
     tensors = []
     board   = game.board()
     fen     = board.fen()
-    tensors.append(fen_to_tensor(fen))
     for move in game.mainline_moves():
         board.push(move)
         fen = board.fen()
@@ -77,16 +76,15 @@ def tensors_labels_for_each_move(game):
     labels  = []
     results = []
     board   = game.board()
-    fen     = board.fen()
     uci     = create_uci_labels()
 
     for move in game.mainline_moves():
-        results.append(get_result(game))
-        tensors.append(fen_to_tensor(fen))
         index = uci.index(move.uci())
         labels.append(index)
         board.push(move)
         fen = board.fen()
+        results.append(get_result(game))
+        tensors.append(fen_to_tensor(fen))
 
     return np.asarray(tensors), np.asarray(labels), np.asarray(results)
 

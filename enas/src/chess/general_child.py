@@ -360,7 +360,7 @@ class GeneralChild(Model):
                 branches.append(
                     self._conv_branch(
                         inputs,
-                        1,
+                        3,
                         is_training,
                         count[1],
                         out_filters,
@@ -371,7 +371,7 @@ class GeneralChild(Model):
                 branches.append(
                     self._conv_branch(
                         inputs,
-                        1,
+                        3,
                         is_training,
                         count[3],
                         out_filters,
