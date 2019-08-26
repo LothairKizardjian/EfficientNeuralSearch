@@ -10,11 +10,11 @@ python src/chess/main.py \
   --output_dir="outputs" \
   --batch_size=64 \
   --num_epochs=500 \
-  --log_every=100 \
+  --log_every=50 \
   --eval_every_epochs=1 \
   --child_use_aux_heads \
-  --child_num_layers=6 \
-  --child_out_filters=18 \
+  --child_num_layers=24 \
+  --child_out_filters=24 \
   --child_l2_reg=0.00025 \
   --child_num_branches=6 \
   --child_num_cell_layers=5 \
