@@ -29,7 +29,7 @@ for max_point in indexes_max_values_avg:
     plt.plot(max_point, max_value_avg, 'x', color="#5B2C6F")
     plt.text(max_point, max_value_avg, '({}, {})'.format(max_point, round(max_value_avg, 4)), fontsize=7)
 plt.ylabel("Average accuracy values")
-plt.axis([0, 310, 0, 1])
+plt.axis([0, 200, 0, 1])
 
 plt.subplot(2, 1, 2)
 plt.plot(max_values, "-", color="#9A7D0A", linewidth=1)
@@ -39,7 +39,7 @@ for max_point in indexes_max_values_max:
 plt.ylabel("Average accuracy values")
 plt.ylabel("Max accuracy values")
 plt.xlabel("Epochs")
-plt.axis([0, 50, 0, 1])
+plt.axis([0, 200, 0, 1])
 
 # plt.show()
 plt.savefig('{}_graph.png'.format(file_name), dpi=400)

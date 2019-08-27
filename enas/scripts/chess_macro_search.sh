@@ -8,8 +8,8 @@ python src/chess/main.py \
   --reset_output_dir \
   --data_path="data/chess" \
   --output_dir="outputs" \
-  --batch_size=64 \
-  --num_epochs=200 \
+  --batch_size=128 \
+  --num_epochs=310 \
   --log_every=50 \
   --eval_every_epochs=1 \
   --child_use_aux_heads \
