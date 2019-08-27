@@ -9,12 +9,12 @@ python src/chess/main.py \
   --data_path="data/chess" \
   --output_dir="outputs" \
   --batch_size=64 \
-  --num_epochs=500 \
+  --num_epochs=200 \
   --log_every=50 \
   --eval_every_epochs=1 \
   --child_use_aux_heads \
-  --child_num_layers=24 \
-  --child_out_filters=24 \
+  --child_num_layers=12 \
+  --child_out_filters=36 \
   --child_l2_reg=0.00025 \
   --child_num_branches=6 \
   --child_num_cell_layers=5 \
