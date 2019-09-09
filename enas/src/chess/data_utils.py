@@ -11,16 +11,19 @@ def read_data(data_path, num_valids=5000):
   print("-" * 80)
   print("Reading data")
 
-  nb_games = 500
+  nb_games = 3000
   #nb_games = sys.maxsize
   boards, labels, results = {}, {}, {}
 
   train_files = [
     "pgn_games/chess_games_2000.pgn",
-    "pgn_games/chess_games_2001.pgn"
+    "pgn_games/chess_games_2001.pgn",
+    "pgn_games/chess_games_2002.pgn",
+    "pgn_games/chess_games_2003.pgn",
+    "pgn_games/chess_games_2004.pgn"
   ]
   test_file = [    
-    "pgn_games/chess_games_2002.pgn"
+    "pgn_games/chess_games_2005.pgn"
   ]
   boards["train"], labels["train"], results["train"] = load_data(data_path, train_files, nb_games)
   
@@ -36,6 +39,8 @@ def read_data(data_path, num_valids=5000):
     boards["valid"], labels["valid"], results["valid"] = None, None, None
 
   boards["test"], labels["test"], results["test"] = load_data(data_path, test_file, nb_games)
+  print(boards.shape)
+  print(results.shape)
   return boards, results
 
 def load_pgn_from_bz2(bz2_path):
