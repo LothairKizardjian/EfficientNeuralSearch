@@ -252,11 +252,9 @@ class GeneralChild(Model):
                 else:
                     raise ValueError("Unknown data_format {0}".format(self.data_format))
 
-                # CIFAR10 to baduk modification
-                w = create_weight("w", [inp_c, 3])
-                # w = create_weight("w", [inp_c, 19*19])
+                # CIFAR10 to chess modification
+                w = create_weight("w", [inp_c, 1])
                 # w = create_weight("w", [inp_c, 10])
-
                 x = tf.matmul(x, w)
         return x
 
@@ -751,16 +749,21 @@ class GeneralChild(Model):
         print(self.x_train)
         logits = self._model(self.x_train, is_training=True)
 
-        # CIFAR10 to baduk modification
+        """
+        # CIFAR10 to chess modification
         log_probs = tf.nn.sparse_softmax_cross_entropy_with_logits(
             logits=logits, labels=self.y_train
         )
-        # log_probs = tf.keras.backend.categorical_crossentropy(target=logits, output=self.y_train, axis=1)
+        """
+        
+        log_probs = tf.keras.backend.categorical_crossentropy(target=logits, output=self.y_train, axis=1)
 
+        
         self.loss = tf.reduce_mean(log_probs)
 
+
         self.train_preds = tf.argmax(logits, axis=1)
-        self.train_preds = tf.cast(self.train_preds, tf.int32)
+        self.train_preds = tf.cast(self.train_preds, tf.float32)
         self.train_acc = tf.equal(self.train_preds, self.y_train)
         self.train_acc = tf.cast(self.train_acc, tf.int32)
         self.train_acc = tf.reduce_sum(self.train_acc)
@@ -804,7 +807,7 @@ class GeneralChild(Model):
             print("Build valid graph")
             logits = self._model(self.x_valid, False, reuse=True)
             self.valid_preds = tf.argmax(logits, axis=1)
-            self.valid_preds = tf.cast(self.valid_preds, tf.int32)
+            self.valid_preds = tf.cast(self.valid_preds, tf.float32)
             self.valid_acc = tf.equal(self.valid_preds, self.y_valid)
             self.valid_acc = tf.cast(self.valid_acc, tf.int32)
             self.valid_acc = tf.reduce_sum(self.valid_acc)
@@ -815,7 +818,7 @@ class GeneralChild(Model):
         print("Build test graph")
         logits = self._model(self.x_test, False, reuse=True)
         self.test_preds = tf.argmax(logits, axis=1)
-        self.test_preds = tf.cast(self.test_preds, tf.int32)
+        self.test_preds = tf.cast(self.test_preds, tf.float32)
         self.test_acc = tf.equal(self.test_preds, self.y_test)
         self.test_acc = tf.cast(self.test_acc, tf.int32)
         self.test_acc = tf.reduce_sum(self.test_acc)
@@ -861,7 +864,7 @@ class GeneralChild(Model):
 
         logits = self._model(x_valid_shuffle, False, reuse=True)
         valid_shuffle_preds = tf.argmax(logits, axis=1)
-        valid_shuffle_preds = tf.cast(valid_shuffle_preds, tf.int32)
+        valid_shuffle_preds = tf.cast(valid_shuffle_preds, tf.float32)
         self.valid_shuffle_acc = tf.equal(valid_shuffle_preds, y_valid_shuffle)
         self.valid_shuffle_acc = tf.cast(self.valid_shuffle_acc, tf.int32)
         self.valid_shuffle_acc = tf.reduce_sum(self.valid_shuffle_acc)

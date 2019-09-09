@@ -1,4 +1,5 @@
 import numpy as np
+import tensorflow as tf
 import chess.pgn
 import copy
 
@@ -52,21 +53,21 @@ def tensors_for_each_move(game):
 
 def get_result_logits(game):
     result = game.headers["Result"]
-    if result == "1-0":
+    if result == "1-0": #white victory
         return np.array([1,0,0])
-    elif result == "0-1":
+    elif result == "0-1": #black victory
         return np.array([0,1,0])
-    else:
+    else: #draw
         return np.array([0,0,1])
     
 def get_result(game):
     result = game.headers["Result"]
     if result == "1-0":
-        return 0
+        return 1.0
     elif result == "0-1":
-        return 1
+        return -1.0
     else:
-        return 2
+        return 0.0
     
 def tensors_labels_for_each_move(game):
     #returns a tensor corresponding to the board's actual state and the move done according to
@@ -86,7 +87,7 @@ def tensors_labels_for_each_move(game):
         results.append(get_result(game))
         tensors.append(fen_to_tensor(fen))
 
-    return np.asarray(tensors), np.asarray(labels), np.asarray(results)
+    return np.asarray(tensors).astype('float32'), np.asarray(labels).astype('float32'), np.asarray(results).astype('float32')
 
 def tensors_labels_from_games(games):
     tensors = []
@@ -99,7 +100,7 @@ def tensors_labels_from_games(games):
                 tensors.append(tens[i])
                 labels.append(labs[i])
                 results.append(res[i])
-    return np.asarray(tensors),np.asarray(labels).astype('int32'),np.asarray(results).astype('int32')
+    return np.asarray(tensors),np.asarray(labels).astype('float32'),np.asarray(results).astype('float32')
 
 def create_uci_labels():
     """
