@@ -61,10 +61,19 @@ Loading data for chess_games_2000
 Loading data for chess_games_2001
 Loading data for chess_games_2002
 Loading data for chess_games_2003
+Loading games for pgn chess_games_2003 ...
+1000 games loaded
+loading tensors and according labels ...
 Loading data for chess_games_2004
-4050
+Loading games for pgn chess_games_2004 ...
+1000 games loaded
+loading tensors and according labels ...
+42876
 Loading data ...
 Loading data for chess_games_2005
+Loading games for pgn chess_games_2005 ...
+1000 games loaded
+loading tensors and according labels ...
 --------------------------------------------------------------------------------
 Build model child
 Build data ops
@@ -87,56 +96,3 @@ Tensor("child/layer_8/skip/bn/Identity:0", shape=(?, 36, 2, 2), dtype=float32)
 Tensor("child/layer_9/skip/bn/Identity:0", shape=(?, 36, 2, 2), dtype=float32)
 Tensor("child/layer_10/skip/bn/Identity:0", shape=(?, 36, 2, 2), dtype=float32)
 Tensor("child/layer_11/skip/bn/Identity:0", shape=(?, 36, 2, 2), dtype=float32)
-Model has 315216 params
---------------------------------------------------------------------------------
-Build valid graph
-Tensor("child_1/layer_0/case/cond/Merge:0", shape=(?, 36, 8, 8), dtype=float32)
-Tensor("child_1/layer_1/skip/bn/FusedBatchNorm:0", shape=(?, 36, 8, 8), dtype=float32)
-Tensor("child_1/layer_2/skip/bn/FusedBatchNorm:0", shape=(?, 36, 8, 8), dtype=float32)
-Tensor("child_1/layer_3/pool_at_3/from_4/bn/FusedBatchNorm:0", shape=(?, 36, 4, 4), dtype=float32)
-Tensor("child_1/layer_4/skip/bn/FusedBatchNorm:0", shape=(?, 36, 4, 4), dtype=float32)
-Tensor("child_1/layer_5/skip/bn/FusedBatchNorm:0", shape=(?, 36, 4, 4), dtype=float32)
-Tensor("child_1/layer_6/skip/bn/FusedBatchNorm:0", shape=(?, 36, 4, 4), dtype=float32)
-Tensor("child_1/layer_7/pool_at_7/from_8/bn/FusedBatchNorm:0", shape=(?, 36, 2, 2), dtype=float32)
-Tensor("child_1/layer_8/skip/bn/FusedBatchNorm:0", shape=(?, 36, 2, 2), dtype=float32)
-Tensor("child_1/layer_9/skip/bn/FusedBatchNorm:0", shape=(?, 36, 2, 2), dtype=float32)
-Tensor("child_1/layer_10/skip/bn/FusedBatchNorm:0", shape=(?, 36, 2, 2), dtype=float32)
-Tensor("child_1/layer_11/skip/bn/FusedBatchNorm:0", shape=(?, 36, 2, 2), dtype=float32)
---------------------------------------------------------------------------------
-Build test graph
-Tensor("child_2/layer_0/case/cond/Merge:0", shape=(?, 36, 8, 8), dtype=float32)
-Tensor("child_2/layer_1/skip/bn/FusedBatchNorm:0", shape=(?, 36, 8, 8), dtype=float32)
-Tensor("child_2/layer_2/skip/bn/FusedBatchNorm:0", shape=(?, 36, 8, 8), dtype=float32)
-Tensor("child_2/layer_3/pool_at_3/from_4/bn/FusedBatchNorm:0", shape=(?, 36, 4, 4), dtype=float32)
-Tensor("child_2/layer_4/skip/bn/FusedBatchNorm:0", shape=(?, 36, 4, 4), dtype=float32)
-Tensor("child_2/layer_5/skip/bn/FusedBatchNorm:0", shape=(?, 36, 4, 4), dtype=float32)
-Tensor("child_2/layer_6/skip/bn/FusedBatchNorm:0", shape=(?, 36, 4, 4), dtype=float32)
-Tensor("child_2/layer_7/pool_at_7/from_8/bn/FusedBatchNorm:0", shape=(?, 36, 2, 2), dtype=float32)
-Tensor("child_2/layer_8/skip/bn/FusedBatchNorm:0", shape=(?, 36, 2, 2), dtype=float32)
-Tensor("child_2/layer_9/skip/bn/FusedBatchNorm:0", shape=(?, 36, 2, 2), dtype=float32)
-Tensor("child_2/layer_10/skip/bn/FusedBatchNorm:0", shape=(?, 36, 2, 2), dtype=float32)
-Tensor("child_2/layer_11/skip/bn/FusedBatchNorm:0", shape=(?, 36, 2, 2), dtype=float32)
---------------------------------------------------------------------------------
-Build valid graph on shuffled data
-Tensor("child_3/layer_0/case/cond/Merge:0", shape=(?, 36, 8, 8), dtype=float32)
-Tensor("child_3/layer_1/skip/bn/FusedBatchNorm:0", shape=(?, 36, 8, 8), dtype=float32)
-Tensor("child_3/layer_2/skip/bn/FusedBatchNorm:0", shape=(?, 36, 8, 8), dtype=float32)
-Tensor("child_3/layer_3/pool_at_3/from_4/bn/FusedBatchNorm:0", shape=(?, 36, 4, 4), dtype=float32)
-Tensor("child_3/layer_4/skip/bn/FusedBatchNorm:0", shape=(?, 36, 4, 4), dtype=float32)
-Tensor("child_3/layer_5/skip/bn/FusedBatchNorm:0", shape=(?, 36, 4, 4), dtype=float32)
-Tensor("child_3/layer_6/skip/bn/FusedBatchNorm:0", shape=(?, 36, 4, 4), dtype=float32)
-Tensor("child_3/layer_7/pool_at_7/from_8/bn/FusedBatchNorm:0", shape=(?, 36, 2, 2), dtype=float32)
-Tensor("child_3/layer_8/skip/bn/FusedBatchNorm:0", shape=(?, 36, 2, 2), dtype=float32)
-Tensor("child_3/layer_9/skip/bn/FusedBatchNorm:0", shape=(?, 36, 2, 2), dtype=float32)
-Tensor("child_3/layer_10/skip/bn/FusedBatchNorm:0", shape=(?, 36, 2, 2), dtype=float32)
-Tensor("child_3/layer_11/skip/bn/FusedBatchNorm:0", shape=(?, 36, 2, 2), dtype=float32)
---------------------------------------------------------------------------------
-<tf.Variable 'controller/lstm/layer_0/w:0' shape=(128, 256) dtype=float32_ref>
-<tf.Variable 'controller/g_emb:0' shape=(1, 64) dtype=float32_ref>
-<tf.Variable 'controller/emb/w:0' shape=(6, 64) dtype=float32_ref>
-<tf.Variable 'controller/softmax/w:0' shape=(64, 6) dtype=float32_ref>
-<tf.Variable 'controller/attention/w_1:0' shape=(64, 64) dtype=float32_ref>
-<tf.Variable 'controller/attention/w_2:0' shape=(64, 64) dtype=float32_ref>
-<tf.Variable 'controller/attention/v:0' shape=(64, 1) dtype=float32_ref>
---------------------------------------------------------------------------------
-Starting session
