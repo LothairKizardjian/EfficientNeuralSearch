@@ -87,6 +87,10 @@ Tensor("child/layer_8/skip/bn/Identity:0", shape=(?, 36, 2, 2), dtype=float32)
 Tensor("child/layer_9/skip/bn/Identity:0", shape=(?, 36, 2, 2), dtype=float32)
 Tensor("child/layer_10/skip/bn/Identity:0", shape=(?, 36, 2, 2), dtype=float32)
 Tensor("child/layer_11/skip/bn/Identity:0", shape=(?, 36, 2, 2), dtype=float32)
+@@@@@@@@@@@@@@@@@@@@@@@@
+Tensor("child/fc/MatMul:0", shape=(?, 1), dtype=float32)
+Tensor("shuffle_batch:1", shape=(?,), dtype=float32, device=/device:CPU:0)
+@@@@@@@@@@@@@@@@@@@@@@@@
 Model has 315216 params
 --------------------------------------------------------------------------------
 Build valid graph
