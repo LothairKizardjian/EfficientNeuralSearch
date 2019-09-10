@@ -755,6 +755,10 @@ class GeneralChild(Model):
             logits=logits, labels=self.y_train
         )
         """
+        print("@@@@@@@@@@@@@@@@@@@@@@@@")
+        print(logits)
+        print(self.y_train)
+        print("@@@@@@@@@@@@@@@@@@@@@@@@")
         
         log_probs = tf.keras.backend.categorical_crossentropy(target=logits, output=self.y_train, axis=1)
 
