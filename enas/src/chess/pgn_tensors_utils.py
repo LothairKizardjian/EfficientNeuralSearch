@@ -100,7 +100,7 @@ def tensors_labels_from_games(games):
                 tensors.append(tens[i])
                 labels.append(labs[i])
                 results.append(res[i])
-    return np.asarray(tensors),np.asarray(labels).astype('float32'),np.asarray(results).astype('float32')
+    return np.asarray(tensors).astype('float32'),np.asarray(labels).astype('float32'),np.asarray(results).astype('float32')
 
 def create_uci_labels():
     """

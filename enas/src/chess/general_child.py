@@ -256,6 +256,8 @@ class GeneralChild(Model):
                 w = create_weight("w", [inp_c, 1])
                 # w = create_weight("w", [inp_c, 10])
                 x = tf.matmul(x, w)
+                x = tf.tanh(x)
+                
         return x
 
     def _enas_layer(self, layer_id, prev_layers, start_idx, out_filters, is_training):

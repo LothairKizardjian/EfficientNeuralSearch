@@ -11,7 +11,7 @@ def read_data(data_path, num_valids=20000):
   print("-" * 80)
   print("Reading data")
 
-  nb_games = 1000
+  nb_games = 200
   #nb_games = sys.maxsize
   boards, labels, results = {}, {}, {}
 
@@ -43,7 +43,7 @@ def read_data(data_path, num_valids=20000):
     boards["valid"], labels["valid"], results["valid"] = None, None, None
 
   boards["test"], labels["test"], results["test"] = load_data(data_path, test_file, nb_games)
-
+  
   return boards, results
 
 def load_pgn_from_bz2(bz2_path):
