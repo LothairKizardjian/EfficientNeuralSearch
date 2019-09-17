@@ -28,8 +28,6 @@ def read_data(data_path, num_valids=20000):
   boards["train"], labels["train"], results["train"] = load_data(data_path, train_files, nb_games)
 
   num_valids = int(len(boards["train"])*0.1)
-
-  print(num_valids)
   
   if num_valids:
     boards["valid"] = boards["train"][-num_valids:]
@@ -43,7 +41,7 @@ def read_data(data_path, num_valids=20000):
     boards["valid"], labels["valid"], results["valid"] = None, None, None
 
   boards["test"], labels["test"], results["test"] = load_data(data_path, test_file, nb_games)
-  
+
   return boards, results
 
 def load_pgn_from_bz2(bz2_path):
