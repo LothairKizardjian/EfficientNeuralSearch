@@ -763,7 +763,7 @@ class GeneralChild(Model):
         print("@@@@@@@@@@@@@@@@@@@@@@@@")
         
         #log_probs = tf.keras.backend.categorical_crossentropy(target=logits, output=self.y_train, axis=1)
-        log_probs = tf.keras.losses.MSE(logits,y_train)
+        log_probs = tf.keras.losses.MSE(logits,self.y_train)
         
         self.loss = tf.reduce_mean(log_probs)
 
